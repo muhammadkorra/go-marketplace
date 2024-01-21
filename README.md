@@ -1,2 +1,2 @@
 # go-marketplace
-An Marketplace API using Go, PostgreSQL
+A Marketplace API using Go, PostgreSQL
