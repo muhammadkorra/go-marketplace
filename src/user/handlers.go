@@ -32,7 +32,7 @@ func (u *UserHandler) GetUserByID(c echo.Context) error {
 		c.JSON(http.StatusInternalServerError, "could not parse user id")
 	}
 
-	user, err := u.r.FindById(uint(id))
+	user, err := u.r.FindByID(uint(id))
 	if err != nil {
 		return c.JSON(http.StatusNotFound, map[string]any{"message": "did not find user with specified id", "success": false})
 	}
