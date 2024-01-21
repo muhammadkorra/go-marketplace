@@ -1,15 +1,18 @@
 package main
 
 import (
+	"go-marketplace/src/api"
 	"go-marketplace/src/database"
 	"log"
 
+	"github.com/labstack/echo/v4"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
 
 func main() {
+	app := echo.New()
 	db, err := gorm.Open(postgres.Open("host=localhost user=postgres password=password port=5432 sslmode=disable TimeZone=Asia/Dubai"), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
 	})
@@ -21,4 +24,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Failed to run migrations")
 	}
+
+	api.SetupRoutes(app, db)
+
 }

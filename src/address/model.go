@@ -1,4 +1,4 @@
-package model
+package address
 
 type AddressType string
 
