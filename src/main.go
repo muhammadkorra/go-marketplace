@@ -25,6 +25,11 @@ func main() {
 		log.Fatal("Failed to run migrations")
 	}
 
+	err = database.RunSeeders(db)
+	if err != nil {
+		log.Fatal("failed to run seeders", err)
+	}
+
 	api.SetupRoutes(app, db)
 
 }
